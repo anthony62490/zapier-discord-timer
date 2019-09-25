@@ -2,6 +2,10 @@ const webhook = {
   id: "",
   token: ""
 };
+const webhook2 = {
+  id: "",
+  token: ""
+}
 const earlyCutoff = 9; //9
 const lateCutoff = 22; //22
 const frequency = 3 //3
@@ -98,8 +102,17 @@ if(alert) {
     body: JSON.stringify(body)
   };
 
+  let id, token;
+  if (timeLeft.days === 0 && timeLeft.hours === 0) {
+    id = webhook2.id;
+    token = webhook2.token;
+  } else {
+    id = webhook.id;
+    token = webhook.token;
+  }
+
   //make request
-  const res = await fetch(`https://discordapp.com/api/webhooks/${webhook.id}/${webhook.token}`, options);
+  const res = await fetch(`https://discordapp.com/api/webhooks/${id}/${token}`, options);
   return {res};
 } else {
   return {text: "Did not alert. Alert bool not set", ...debug};
