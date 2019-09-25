@@ -89,7 +89,7 @@ if(alert) {
   const content = 
     (timeLeft.days > 0 || timeLeft.hours >= 20) ? `COUNTDOWN TO SPACE!\n${timeLeft.days} days, ${timeLeft.hours} hours, ${timeLeft.minutes} minutes, ${timeLeft.seconds} seconds` :
     (timeLeft.days === 0 && timeLeft.hours < 20 && timeLeft.hours > 0) ? `${randPhrase}\n${timeLeft.days} days, ${timeLeft.hours} hours, ${timeLeft.minutes} minutes, ${timeLeft.seconds} seconds` :
-    (timeLeft.days === 0 && timeLeft.hours === 0) ? "@everyone HOLY SHIT! HEY GUYS! IT'S TIME FOR COOL SPACE! GET YOUR ASSES IN HERE!" :
+    (timeLeft.days === 0 && timeLeft.hours === 0) ? "@Space Truckers HOLY SHIT! HEY GUYS! IT'S TIME FOR COOL SPACE! GET YOUR ASSES IN HERE!" :
     `Something has gone horribly wrong. I don't know what it is. ${JSON.stringify(debug)}`;
   const body = {
     username: "Space Clock",
