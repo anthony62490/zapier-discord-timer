@@ -1,50 +1,26 @@
+// donut steel
 const webhook = {
     id: "625905486289567754",
     token: "CSVgNzwdsl4ARWQ9Eofv-e3o82UoJyXJr8rY8tNFdK1jmx3xkBFoTb7A796zs8U9VBZx"
   }
 
-var DateDiff = {
-    inDays: function(d1, d2) {
-        var t1 = d1.getTime();
-        var t2 = d2.getTime();
-        return parseInt((t1-t2)/(24*3600*1000));
-    },
-    inHours: function(d1, d2) {
-        var h1 = d1.getTime();
-        var h2 = d2.getTime();
-        const dayInHours = 24*parseInt((h1-h2)/(24*3600*1000));
-        return parseInt(((h1-h2)/(1000*3600))-dayInHours);
-    },
-    inMinutes: function(d1, d2) {
-        var m1 = d1.getTime();
-        var m2 = d2.getTime();
-        const dayInHours = 24*parseInt((m1-m2)/(24*3600*1000));
-        const dayInMinutes = 24*60*parseInt((m1-m2)/(24*3600*1000));
-        const hourInMinutes = 60*parseInt(((m1-m2)/(1000*3600))-dayInHours);
-        return parseInt(((m1-m2)/(60*1000))-dayInMinutes-hourInMinutes);
-    },
-    inSeconds: function(d1, d2) {
-        var s1 = d1.getTime();
-        var s2 = d2.getTime();
-        const dayInHours = 24*parseInt((s1-s2)/(24*3600*1000));
-        const dayInMinutes = 24*60*parseInt((s1-s2)/(24*3600*1000));
-        const dayInSeconds = 24*60*60*parseInt((s1-s2)/(24*3600*1000));
-        const hourInMinutes = 60*parseInt(((s1-s2)/(1000*3600))-dayInHours);
-        const hourInSeconds = 60*60*parseInt(((s1-s2)/(1000*3600))-dayInHours);
-        const minuteInSeconds = 60*parseInt(((s1-s2)/(60*1000))-dayInMinutes-hourInMinutes)
-        return parseInt(((s1-s2)/1000)-dayInSeconds-hourInSeconds-minuteInSeconds);
-    }
+function getTimeUntil(d1, d2) {
+  const dateNow = d1.getTime();
+  const dateTarget = d2.getTime();
+  let totalSeconds = Math.floor((dateTarget - dateNow)/1000);
+  const days = Math.floor(totalSeconds/(24*3600));
+  totalSeconds -= (days*24*3600);
+  const hours = Math.floor(totalSeconds/(3600));
+  totalSeconds -= (hours*3600);
+  const minutes = Math.floor(totalSeconds/(60));
+  const seconds = totalSeconds - (minutes*60);
+  return { days, hours, minutes, seconds };
 }
 
-var d1 = new Date("2019-10-01T00:00:00Z");
-var d2 = new Date();
+const now = new Date();
+const then = new Date("2019-10-01T00:00:00Z");
 
-const timeTillDoom = {
-  days: DateDiff.inDays(d1, d2),
-  hours: DateDiff.inHours(d1, d2),
-  minutes: DateDiff.inMinutes(d1, d2),
-  seconds: DateDiff.inSeconds(d1, d2)
-};
+const timeTillDoom = getTimeUntil(now,then);
 
 const body = {
     username: "Space Clock",
