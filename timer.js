@@ -4,6 +4,7 @@ const webhook = {
 };
 const earlyCutoff = 9; //9
 const lateCutoff = 22; //22
+const frequency = 3 //3
 //locale time
 const now = new Date(new Date().toUTCString());
 // UTC time
@@ -24,7 +25,6 @@ function getTimeUntil(d1, d2) {
   return { days, hours, minutes, seconds };
 };
 
-
 //get time
 const timeLeft = getTimeUntil(now,then);
 
@@ -42,7 +42,7 @@ let alert = false;
 //logic to make alert less frequent
 if (currentHour > earlyCutoff && currentHour < lateCutoff) {
   if (timeLeft.days > 0) {
-    if (timeLeft.hours % 3 === 0) {
+    if (timeLeft.hours % frequency === 0) {
       alert = true;
     } else {
       return {text: "Did not alert. Off hour", ...debug};
