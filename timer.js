@@ -8,11 +8,11 @@ const webhook2 = {
 }
 const earlyCutoff = 9; //9
 const lateCutoff = 22; //22
-const frequency = 3 //3
+const frequency = 4 //4
 //locale time
 const now = new Date(new Date().toUTCString());
 // UTC time
-const then = new Date("2019-10-01T00:00:00Z");
+const then = new Date("2019-10-30T00:00:00Z");
 // Convert current UTC hour to CST (0-23)
 const currentHour = now.getHours()-5 > 0 ? now.getHours()-5 : now.getHours()+19;
 
@@ -81,7 +81,7 @@ if(alert) {
     "Almost time to find out how many arms we can bolt on to the robot!",
     "At this rate, we should be the enemy of every pirate in known space by dinnertime!",
     "AIs are people too! (but they still don't need money)",
-    "It has been [2] days since the crew vented someone into space."
+    "It has been [2] days since the crew last vented someone into space."
   ];
   const randPhrase = `${phrase[Math.floor(Math.random()*phrase.length)]}`;
   const content = 
